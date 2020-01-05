@@ -1,0 +1,11 @@
+name: chartisan
+description: The next generation charting experience.
+version: 1.0.0
+author: Èrik Campobadal Forés <soc@erik.cat>
+homepage: https://erik.cat
+repository: https://github.com/Chartisan/Dart
+documentation: https://github.com/Chartisan/Dart
+issue_tracker: https://github.com/Chartisan/Dart/issues
+
+environment:
+    sdk: '>=2.1.0 <3.0.0'
