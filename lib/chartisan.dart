@@ -3,6 +3,7 @@ library chartisan;
 import 'dart:convert';
 import 'package:chartisan/data.dart';
 
+/// Represents a chartisan chart instance.
 class Chartisan {
   /// Stores the server data of the chart.
   ServerData _serverData = ServerData();
@@ -55,6 +56,7 @@ class Chartisan {
     return this;
   }
 
+  /// Transforms the chart into a JSON string.
   String toJSON() => json.encode(this._serverData);
 
   /// getNewID returns an ID that is not used by any of the datasets.
