@@ -11,6 +11,9 @@ Future main() async {
   await for (HttpRequest request in server) {
     final chart = Chartisan.build().labels(['a', 'b', 'c']).dataset(
         'Sample 1', [1, 2, 3]).dataset('Sample 2', [3, 2, 1]).toJSON();
+    request.response.headers
+      ..add('Content-Type', 'application/json')
+      ..add('Access-Control-Allow-Origin', '*');
     request.response.write(chart);
     await request.response.close();
   }
