@@ -6,7 +6,7 @@ class ChartData {
   List<String> labels = [];
 
   /// Stores the extra information of the chart.
-  Map<String, dynamic> extra = {};
+  Map<String, dynamic> extra = null;
 
   /// Transforms the ChartData into a JSON.
   Map<String, dynamic> toJson() => {
@@ -17,9 +17,6 @@ class ChartData {
 
 /// Represents the DatasetData of the chart.
 class DatasetData {
-  /// Stores the ID of the dataset.
-  int id;
-
   /// Stores the dataset name (the label).
   String name;
 
@@ -30,11 +27,10 @@ class DatasetData {
   Map<String, dynamic> extra;
 
   /// Creates a new dataset data.
-  DatasetData(this.name, this.values, this.id, this.extra);
+  DatasetData(this.name, this.values, this.extra);
 
   /// Transforms the dataset to JSON.
   Map<String, dynamic> toJson() => {
-        'id': this.id,
         'name': this.name,
         'values': this.values,
         'extra': this.extra,
