@@ -57,6 +57,9 @@ class Chartisan {
   /// Transforms the chart into a JSON string.
   String toJSON() => json.encode(this._serverData);
 
+  /// Transforms it to an object.
+  ServerData toObject() => this._serverData;
+
   /// Returns a dataset from the chart or creates a new one given the data.
   List<dynamic> _getOrCreateDataset(
     String name,
