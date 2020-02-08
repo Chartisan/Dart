@@ -1,3 +1,7 @@
+## [1.2.0] - Now uses double instead of int
+
+-   The dataset values now require a `List<double>` instead of a `List<int>`
+
 ## [1.1.0] - Added missing method
 
 -   Fixes to the `dataset()` method.

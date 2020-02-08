@@ -30,7 +30,7 @@ class Chartisan {
   /// If the ID has already been used, the dataset will be replaced with this one.
   Chartisan advancedDataset(
     String name,
-    List<int> values,
+    List<double> values,
     Map<String, dynamic> extra,
   ) {
     // Get or create the given dataset.
@@ -51,7 +51,7 @@ class Chartisan {
 
   /// Dataset adds a new simple dataset to the chart. If more advanced control is
   /// needed, consider using `AdvancedDataset` instead.
-  Chartisan dataset(String name, List<int> values) {
+  Chartisan dataset(String name, List<double> values) {
     this.advancedDataset(name, values, null);
     return this;
   }
@@ -65,7 +65,7 @@ class Chartisan {
   /// Returns a dataset from the chart or creates a new one given the data.
   List<dynamic> _getOrCreateDataset(
     String name,
-    List<int> values,
+    List<double> values,
     Map<String, dynamic> extra,
   ) {
     for (final dataset in this._serverData.datasets) {

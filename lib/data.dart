@@ -1,5 +1,7 @@
 library chartisan;
 
+import 'dart:ffi';
+
 /// Reprensets the ChartData structure.
 class ChartData {
   /// Stores the chart labels.
@@ -21,7 +23,7 @@ class DatasetData {
   String name;
 
   /// Stores the dataset values.
-  List<int> values;
+  List<double> values;
 
   /// Stores the dataset extra information.
   Map<String, dynamic> extra;
