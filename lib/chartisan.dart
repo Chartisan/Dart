@@ -6,10 +6,13 @@ import 'package:chartisan/data.dart';
 /// Represents a chartisan chart instance.
 class Chartisan {
   /// Stores the server data of the chart.
-  ServerData _serverData = ServerData();
+  final ServerData _serverData;
 
   /// Creates a new instance of a chartisan chart.
-  Chartisan.build();
+  Chartisan(ServerData data) : _serverData = data;
+
+  /// Creates a new instance of a chartisan chart.
+  static Chartisan build() => Chartisan(ServerData());
 
   /// Sets the chart labels.
   Chartisan labels(List<String> labels) {
@@ -49,8 +52,7 @@ class Chartisan {
   /// Dataset adds a new simple dataset to the chart. If more advanced control is
   /// needed, consider using `AdvancedDataset` instead.
   Chartisan dataset(String name, List<int> values) {
-    final DatasetData dataset = this._getOrCreateDataset(name, values, null)[0];
-    this._serverData.datasets.add(dataset);
+    this.advancedDataset(name, values, null);
     return this;
   }
 
@@ -71,6 +73,6 @@ class Chartisan {
         return [dataset, false];
       }
     }
-    return [new DatasetData(name, values, extra), true];
+    return [DatasetData(name, values, extra), true];
   }
 }
