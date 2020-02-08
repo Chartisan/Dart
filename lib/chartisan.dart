@@ -9,7 +9,7 @@ class Chartisan {
   final ServerData _serverData;
 
   /// Creates a new instance of a chartisan chart.
-  Chartisan(ServerData data) : _serverData = data;
+  Chartisan(this._serverData);
 
   /// Creates a new instance of a chartisan chart.
   static Chartisan build() => Chartisan(ServerData());
