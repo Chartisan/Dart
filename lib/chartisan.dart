@@ -33,28 +33,21 @@ class Chartisan {
     List<double> values,
     Map<String, dynamic> extra,
   ) {
-    // Get or create the given dataset.
-    final datasetInfo = this._getOrCreateDataset(name, values, extra);
-    final DatasetData dataset = datasetInfo[0];
-    final bool isNew = datasetInfo[1];
-    if (isNew) {
-      // Append the new dataset.
-      this._serverData.datasets.add(dataset);
-      return this;
+    final dataset = this._getDataset(name);
+    if (dataset != null) {
+      dataset.name = name;
+      dataset.values = values;
+      dataset.extra = extra;
+    } else {
+      this._serverData.datasets.add(DatasetData(name, values, extra));
     }
-    // Modify the existing dataset.
-    dataset.name = name;
-    dataset.values = values;
-    dataset.extra = extra;
     return this;
   }
 
   /// Dataset adds a new simple dataset to the chart. If more advanced control is
   /// needed, consider using `AdvancedDataset` instead.
-  Chartisan dataset(String name, List<double> values) {
-    this.advancedDataset(name, values, null);
-    return this;
-  }
+  Chartisan dataset(String name, List<double> values) =>
+      this.advancedDataset(name, values, null);
 
   /// Transforms the chart into a JSON string.
   String toJSON() => json.encode(this._serverData);
@@ -63,16 +56,12 @@ class Chartisan {
   ServerData toObject() => this._serverData;
 
   /// Returns a dataset from the chart or creates a new one given the data.
-  List<dynamic> _getOrCreateDataset(
-    String name,
-    List<double> values,
-    Map<String, dynamic> extra,
-  ) {
+  DatasetData _getDataset(String name) {
     for (final dataset in this._serverData.datasets) {
       if (dataset.name == name) {
-        return [dataset, false];
+        return dataset;
       }
     }
-    return [DatasetData(name, values, extra), true];
+    return null;
   }
 }
