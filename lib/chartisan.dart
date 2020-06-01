@@ -21,7 +21,7 @@ class Chartisan {
   }
 
   /// Adds extra information to the chart.
-  Chartisan extra(Map<String, dynamic> value) {
+  Chartisan extra(Map<String, String> value) {
     this._serverData.chart.extra = value;
     return this;
   }
@@ -31,7 +31,7 @@ class Chartisan {
   Chartisan advancedDataset(
     String name,
     List<double> values,
-    Map<String, dynamic> extra,
+    Map<String, String> extra,
   ) {
     final dataset = this._getDataset(name);
     if (dataset != null) {

@@ -1,14 +1,12 @@
 library chartisan;
 
-import 'dart:ffi';
-
 /// Reprensets the ChartData structure.
 class ChartData {
   /// Stores the chart labels.
   List<String> labels = [];
 
   /// Stores the extra information of the chart.
-  Map<String, dynamic> extra = null;
+  Map<String, String> extra;
 
   /// Transforms the ChartData into a JSON.
   Map<String, dynamic> toJson() => {
@@ -26,7 +24,7 @@ class DatasetData {
   List<double> values;
 
   /// Stores the dataset extra information.
-  Map<String, dynamic> extra;
+  Map<String, String> extra;
 
   /// Creates a new dataset data.
   DatasetData(this.name, this.values, this.extra);
